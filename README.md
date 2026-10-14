@@ -171,3 +171,42 @@ After completing this lab, you will:
 ✅ Return proper HTTP status codes and structured responses  
 
 This is a critical step in your backend developer journey. Next up: persistent databases!
+
+
+
+
+# Event Management API
+
+A simple Flask API for managing events, using an in-memory list as a database.
+
+## Routes
+
+| Method | Route | Description |
+|--------|-------|-------------|
+| GET | `/` | Welcome message |
+| GET | `/events` | List all events |
+| POST | `/events` | Create an event |
+| PATCH | `/events/<id>` | Update an event's title |
+| DELETE | `/events/<id>` | Delete an event |
+
+## Examples
+
+**POST /events**
+Request: `{"title": "Hackathon"}`
+Response (201): `{"id": 3, "title": "Hackathon"}`
+
+**PATCH /events/1**
+Request: `{"title": "Hackathon 2025"}`
+Response (200): `{"id": 1, "title": "Hackathon 2025"}`
+
+**DELETE /events/2**
+Response: 204 No Content
+
+**Errors**
+- Missing title: 400 `{"error": "Title is required"}`
+- Unknown ID: 404 `{"error": "Event not found"}`
+
+## Run
+
+    pip install flask
+    python app.py
